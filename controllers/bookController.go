@@ -90,7 +90,7 @@ func UpdateBook(ctx *gin.Context){
 		})
 	}
 	ctx.JSON(http.StatusOK,gin.H{
-		"message":fmt.Sprint("book with id %v has been succesfully updated"),
+		"message":fmt.Sprint("book with id %v has been succesfully updated",bookID),
 	})
 }
 //DELETE BOOK
@@ -110,10 +110,10 @@ func DeleteBook(ctx *gin.Context){
 	if !condition {
 		ctx.AbortWithStatusJSON(http.StatusNotFound,gin.H{
 			"error_status":"Data not found",
-			"error_message":fmt.Sprint("car with id %v not found"),
+			"error_message":fmt.Sprint("book with id %v not found"),
 		})
 	}
-	copy(CarDatas[bookIndex:],CarDatas[bookIndex+1:])
+	copy(BookDatas[bookIndex:],BookDatas[bookIndex+1:])
 	BookDatas[len(BookDatas)-1] = Book{}
 	BookDatas = BookDatas[:len(BookDatas)-1]
 
